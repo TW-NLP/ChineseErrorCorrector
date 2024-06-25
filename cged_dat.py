@@ -5,13 +5,13 @@ from tqdm import tqdm
 from opencc import OpenCC
 import random
 import json
-from config import *
+from config import LTPPath
 from transformers import set_seed
 
 set_seed(42)
 
 ltp = LTP(LTPPath.LTP_MODEL_DIR)
-ltp.to("cuda:1")
+ltp.to("cuda")
 cc = OpenCC('t2s')
 
 random.seed(42)
