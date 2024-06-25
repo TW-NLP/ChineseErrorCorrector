@@ -34,7 +34,9 @@ pre_model下的ltp_small,下载地址：https://huggingface.co/LTP/small
 
 ### 获得2024CCL Task7 一等奖
 2024CCL Task7: https://github.com/cubenlp/2024CCL_CEFE
+
 博客经验分享：https://www.cnblogs.com/twnlp/p/18208637
+
 评测论文：待发表
 
 
