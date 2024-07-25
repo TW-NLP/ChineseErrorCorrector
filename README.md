@@ -1,4 +1,5 @@
 #  一键语法错误增强工具
+欢迎使用一键语法错误增强工具，该工具可以进行14种语法错误的增强，不同行业可以根据自己的数据进行错误替换，来训练自己的语法和拼写模型。
 
 使用：`pip install ChineseErrorCorrector`
 
@@ -47,6 +48,8 @@ from ChineseErrorCorrector.dat import GrammarErrorDat
 cged_tool = GrammarErrorDat()
 print(cged_tool.lack_word("小明住在北京"))
 
+# 输出：小明在北京
+
 ```
 ### 2.错别字错误
 
@@ -56,6 +59,7 @@ from ChineseErrorCorrector.dat import GrammarErrorDat
 
 cged_tool = GrammarErrorDat()
 print(cged_tool.wrong_word("小明住在北京"))
+# 输出：小明住在北鲸
 
 ```
 ### 3.缺少标点
@@ -65,8 +69,8 @@ print(cged_tool.wrong_word("小明住在北京"))
 from ChineseErrorCorrector.dat import GrammarErrorDat
 
 cged_tool = GrammarErrorDat()
-print(cged_tool.lack_char("小明住在北京"))
-
+print(cged_tool.lack_char("小明住在北京，热爱NLP。"))
+# 输出：小明住在北京热爱NLP。
 
 ```
 ### 4.错用标点
@@ -77,6 +81,7 @@ from ChineseErrorCorrector.dat import GrammarErrorDat
 
 cged_tool = GrammarErrorDat()
 print(cged_tool.wrong_char("小明住在北京"))
+# 输出：小明住在北京。热爱NLP。
 
 ```
 ### 5.主语不明
@@ -87,6 +92,7 @@ from ChineseErrorCorrector.dat import GrammarErrorDat
 
 cged_tool = GrammarErrorDat()
 print(cged_tool.unknow_sub("小明住在北京"))
+# 输出：住在北京
 
 ```
 ### 6.谓语残缺
@@ -97,7 +103,7 @@ from ChineseErrorCorrector.dat import GrammarErrorDat
 
 cged_tool = GrammarErrorDat()
 print(cged_tool.unknow_pred("小明住在北京"))
-
+# 输出：小明在北京
 ```
 ### 7.宾语残缺
 
@@ -106,8 +112,8 @@ print(cged_tool.unknow_pred("小明住在北京"))
 from ChineseErrorCorrector.dat import GrammarErrorDat
 
 cged_tool = GrammarErrorDat()
-print(cged_tool.lack_obj("小明住在北京"))
-
+print(cged_tool.lack_obj("小明住在北京，热爱NLP。"))
+# 输出：小明住在北京，热爱。
 ```
 ### 8.其他成分残缺
 
@@ -116,8 +122,8 @@ print(cged_tool.lack_obj("小明住在北京"))
 from ChineseErrorCorrector.dat import GrammarErrorDat
 
 cged_tool = GrammarErrorDat()
-print(cged_tool.lack_others("小明住在北京"))
-
+print(cged_tool.lack_others("小明住在北京，热爱NLP。"))
+# 输出：小明住北京，热爱NLP。
 ```
 ### 9.虚词多余
 
@@ -125,8 +131,8 @@ print(cged_tool.lack_others("小明住在北京"))
 from ChineseErrorCorrector.dat import GrammarErrorDat
 
 cged_tool = GrammarErrorDat()
-print(cged_tool.red_sub("小明住在北京"))
-
+print(cged_tool.red_fun("小明住在北京，热爱NLP。"))
+# 输出：小明所住的在北京，热爱NLP。
 ```
 ### 10.其他成分多余
 
@@ -135,8 +141,8 @@ print(cged_tool.red_sub("小明住在北京"))
 from ChineseErrorCorrector.dat import GrammarErrorDat
 
 cged_tool = GrammarErrorDat()
-print(cged_tool.red_component("小明住在北京"))
-
+print(cged_tool.red_component("小明住在北京，热爱NLP。"))
+# 输出：小明住在北京，热爱NLP。，看着
 ```
 ### 11.主语多余
 
@@ -145,8 +151,8 @@ print(cged_tool.red_component("小明住在北京"))
 from ChineseErrorCorrector.dat import GrammarErrorDat
 
 cged_tool = GrammarErrorDat()
-print(cged_tool.red_sub("小明住在北京"))
-
+print(cged_tool.red_sub("小明住在北京，热爱NLP。"))
+# 输出：小明住在北京，小明热爱NLP。
 ```
 
 
@@ -157,8 +163,8 @@ print(cged_tool.red_sub("小明住在北京"))
 from ChineseErrorCorrector.dat import GrammarErrorDat
 
 cged_tool = GrammarErrorDat()
-print(cged_tool.wrong_sentence_order("小明住在北京"))
-
+print(cged_tool.wrong_sentence_order("小明住在北京，热爱NLP。"))
+# 输出：热爱NLP。，小明住在北京
 
 ```
 
@@ -172,8 +178,8 @@ print(cged_tool.wrong_sentence_order("小明住在北京"))
 from ChineseErrorCorrector.dat import GrammarErrorDat
 
 cged_tool = GrammarErrorDat()
-print(cged_tool.wrong_ver_obj("小明住在北京"))
-
+print(cged_tool.wrong_ver_obj("小明住在北京，热爱NLP。"))
+# 输出：None ，即无法进行此类错误的增强
 
 ```
 
@@ -185,8 +191,8 @@ print(cged_tool.wrong_ver_obj("小明住在北京"))
 from ChineseErrorCorrector.dat import GrammarErrorDat
 
 cged_tool = GrammarErrorDat()
-print(cged_tool.other_wrong("小明住在北京"))
-
+print(cged_tool.other_wrong("小明住在北京，热爱NLP。"))
+# 输出：None, 即无法进行此类错误的增强
 
 ```
 
