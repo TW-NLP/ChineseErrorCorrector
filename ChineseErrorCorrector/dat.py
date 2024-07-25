@@ -1,25 +1,17 @@
-import random
-import json
 from ltp import LTP
-from tqdm import tqdm
 from opencc import OpenCC
 import random
 import json
-from config import LTPPath
-from transformers import set_seed
-
-set_seed(42)
+import os
+from ChineseErrorCorrector.config import LTPPath
+from ChineseErrorCorrector.utils import set_seed
 
 ltp = LTP(LTPPath.LTP_MODEL_DIR)
-ltp.to("cuda")
 cc = OpenCC('t2s')
+set_seed()
 
-random.seed(42)
 
-
-class CgedDat(object):
-    def __init__(self):
-        pass
+class GrammarErrorDat(object):
 
     def wrong_word(self, line):
         """
@@ -115,7 +107,7 @@ class CgedDat(object):
 
             return new_line['source']
         else:
-            return 0
+            return None
 
     def lack_char(self, line):
         """
@@ -165,7 +157,7 @@ class CgedDat(object):
             # assert (len(source) - len(label)) == 8
             return new_line['source']
         else:
-            return 0
+            return None
 
     def wrong_char(self, line):
         """
@@ -214,7 +206,7 @@ class CgedDat(object):
             # assert (len(source) - len(label)) == 8
             return new_line['source']
         else:
-            return 0
+            return None
 
     def unknow_sub(self, line):
         """
@@ -258,7 +250,7 @@ class CgedDat(object):
             new_line['label'] = label
             return new_line['source']
         else:
-            return 0
+            return None
 
     def unknow_pred(self, line):
         """
@@ -302,7 +294,7 @@ class CgedDat(object):
             new_line['label'] = label
             return new_line['source']
         else:
-            return 0
+            return None
 
     def lack_obj(self, line):
         """
@@ -347,7 +339,7 @@ class CgedDat(object):
             new_line['label'] = label
             return new_line['source']
         else:
-            return 0
+            return None
 
     def lack_others(self, line):
         """
@@ -392,7 +384,7 @@ class CgedDat(object):
             new_line['label'] = label
             return new_line['source']
         else:
-            return 0
+            return None
 
     def red_sub(self, line):
         """
@@ -460,7 +452,7 @@ class CgedDat(object):
                 new_line['label'] = labels
                 return new_line['source']
             else:
-                return 0
+                return None
 
     def red_fun(self, line):
         """
@@ -544,7 +536,7 @@ class CgedDat(object):
             new_line['label'] = label
             return new_line['source']
         else:
-            return 0
+            return None
 
     def red_component(self, sentence):
         """
@@ -627,7 +619,7 @@ class CgedDat(object):
             new_sentence = word_to_add + "，" + sentence
             return new_sentence
         else:
-            return 0
+            return None
 
     def wrong_sentence_order(self, line):
         """
@@ -649,7 +641,7 @@ class CgedDat(object):
             return '，'.join(line_split)
 
         else:
-            return 0
+            return None
 
     def wrong_ver_obj(self, line):
         """
@@ -765,7 +757,7 @@ class CgedDat(object):
 
                 return new_line['source']
         else:
-            return 0
+            return None
 
     def other_wrong(self, line):
         """
@@ -879,11 +871,45 @@ class CgedDat(object):
                 new_line['target'] = target
                 new_line['label'] = label
                 return new_line['source']
-            return 0
+            return None
         else:
-            return 0
+            return None
 
 
 if __name__ == '__main__':
-    cged_tool = CgedDat()
+    cged_tool = GrammarErrorDat()
     print(cged_tool.lack_word("小明住在北京"))
+
+    print(cged_tool.wrong_word("小明住在北京"))
+
+    print(cged_tool.lack_char("小明住在北京"))
+
+    print(cged_tool.wrong_char("小明住在北京"))
+
+    print(cged_tool.unknow_sub("小明住在北京"))
+
+    print(cged_tool.unknow_pred("小明住在北京"))
+
+    print(cged_tool.lack_obj("小明住在北京"))
+
+    print(cged_tool.lack_others("小明住在北京"))
+
+    print(cged_tool.red_sub("小明住在北京"))
+
+    print(cged_tool.red_fun("小明住在北京"))
+
+    print(cged_tool.red_component("小明住在北京"))
+
+    print(cged_tool.wrong_sentence_order("小明住在北京"))
+
+    print(cged_tool.wrong_ver_obj("小明住在北京"))
+
+    print(cged_tool.wrong_ver_obj("小明住在北京"))
+
+    print(cged_tool.other_wrong("小明住在北京"))
+
+    """
+    python -m twine upload --repository-url https://upload.pypi.org/legacy/  dist/*
+或
+twine upload --repository-url https://upload.pypi.org/legacy/  dist/*
+    """

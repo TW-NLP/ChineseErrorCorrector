@@ -1,50 +1,193 @@
+#  一键语法错误增强工具
+
+使用：`pip install ChineseErrorCorrector`
+
+开源不易，欢迎 star🌟
+
+pypi:https://pypi.org/project/ChineseErrorCorrector/
+
+---
+
+## 介绍
+
+一键语法错误增强工具，支持：
+- [1.缺字漏字](#1缺字漏字)
+- [2.错别字错误](#2错别字错误)
+- [3.缺少标点](#3缺少标点)
+- [4.错用标点](#4错用标点)
+- [5.主语不明](#5主语不明)
+- [6.谓语残缺](#6谓语残缺)
+- [7.宾语残缺](#7宾语残缺)
+- [8.其他成分残缺](#8其他成分残缺)
+- [9.虚词多余](#9虚词多余)
+- [10.其他成分多余](#10其他成分多余)
+- [11.主语多余](#11主语多余)
+- [12.语序不当](#12语序不当)
+- [13.动宾搭配不当](#13动宾搭配不当)
+- [14.其他搭配不当](#14其他搭配不当)
 
 
-# 语法错误数据增强
-
-针对行业语法错误数据稀缺问题，提出语法错误替换方法，可以根据领域的数据进行语法错误制作，定制化行业模型。
-目前支持缺字漏字、错别字错误、缺少标点、错用标点、主语不明、谓语残缺、宾语残缺、其他成分残缺、主语多余、虚词多余、其他成分多余、语序不当、动宾搭配不当、其他搭配不当等14种细粒度错误类型的替换。如下图所示：
-![image](images/14error.png)
-
-也可以对一个句子进行多种错误的替换，如下：
-
-![image](images/example.png)
 
 
+## 注意
 
-### 文件目录说明
-eg:
+如果没有进行数据增强，则返回None
+
+---
+## API
+
+
+
+### 1.缺字漏字
+
+
+```python
+from ChineseErrorCorrector.dat import GrammarErrorDat
+
+cged_tool = GrammarErrorDat()
+print(cged_tool.lack_word("小明住在北京"))
 
 ```
-CGED_DAT 
-├── README.md
-├── cged_dat.py
-├── config.py
-├── /data/
-│  ├── /dat_data/
-│  │  ├── confuse_obj_v.json
-│  │  ...
-│  │  └── token_set.txt
-├── /pre_model/
-│  ├── /ltp_small/
-│  │  
+### 2.错别字错误
+
+
+```python
+from ChineseErrorCorrector.dat import GrammarErrorDat
+
+cged_tool = GrammarErrorDat()
+print(cged_tool.wrong_word("小明住在北京"))
+
+```
+### 3.缺少标点
+
+
+```python
+from ChineseErrorCorrector.dat import GrammarErrorDat
+
+cged_tool = GrammarErrorDat()
+print(cged_tool.lack_char("小明住在北京"))
+
+
+```
+### 4.错用标点
+
+
+```python
+from ChineseErrorCorrector.dat import GrammarErrorDat
+
+cged_tool = GrammarErrorDat()
+print(cged_tool.wrong_char("小明住在北京"))
+
+```
+### 5.主语不明
+
+
+```python
+from ChineseErrorCorrector.dat import GrammarErrorDat
+
+cged_tool = GrammarErrorDat()
+print(cged_tool.unknow_sub("小明住在北京"))
+
+```
+### 6.谓语残缺
+
+
+```python
+from ChineseErrorCorrector.dat import GrammarErrorDat
+
+cged_tool = GrammarErrorDat()
+print(cged_tool.unknow_pred("小明住在北京"))
+
+```
+### 7.宾语残缺
+
+
+```python
+from ChineseErrorCorrector.dat import GrammarErrorDat
+
+cged_tool = GrammarErrorDat()
+print(cged_tool.lack_obj("小明住在北京"))
+
+```
+### 8.其他成分残缺
+
+
+```python
+from ChineseErrorCorrector.dat import GrammarErrorDat
+
+cged_tool = GrammarErrorDat()
+print(cged_tool.lack_others("小明住在北京"))
+
+```
+### 9.虚词多余
+
+```python
+from ChineseErrorCorrector.dat import GrammarErrorDat
+
+cged_tool = GrammarErrorDat()
+print(cged_tool.red_sub("小明住在北京"))
+
+```
+### 10.其他成分多余
+
+
+```python
+from ChineseErrorCorrector.dat import GrammarErrorDat
+
+cged_tool = GrammarErrorDat()
+print(cged_tool.red_component("小明住在北京"))
+
+```
+### 11.主语多余
+
+
+```python
+from ChineseErrorCorrector.dat import GrammarErrorDat
+
+cged_tool = GrammarErrorDat()
+print(cged_tool.red_sub("小明住在北京"))
 
 ```
 
-### 模型文件下载
 
-pre_model下的ltp_small,下载地址：https://huggingface.co/LTP/small
-
-### 获得2024CCL Task7 一等奖
-2024CCL Task7: https://github.com/cubenlp/2024CCL_CEFE
-
-博客经验分享：https://www.cnblogs.com/twnlp/p/18208637
-
-评测论文：待发表
+### 12.语序不当
 
 
+```python
+from ChineseErrorCorrector.dat import GrammarErrorDat
+
+cged_tool = GrammarErrorDat()
+print(cged_tool.wrong_sentence_order("小明住在北京"))
+
+
+```
 
 
 
+
+### 13.动宾搭配不当
+
+
+```python
+from ChineseErrorCorrector.dat import GrammarErrorDat
+
+cged_tool = GrammarErrorDat()
+print(cged_tool.wrong_ver_obj("小明住在北京"))
+
+
+```
+
+
+### 14.其他搭配不当
+
+
+```python
+from ChineseErrorCorrector.dat import GrammarErrorDat
+
+cged_tool = GrammarErrorDat()
+print(cged_tool.other_wrong("小明住在北京"))
+
+
+```
 
 

@@ -1,0 +1,2 @@
+include ChineseErrorCorrector/pre_model/ltp_tiny/*
+include ChineseErrorCorrector/data/dat_data/*
