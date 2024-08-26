@@ -80,7 +80,7 @@ print(cged_tool.lack_char("小明住在北京，热爱NLP。"))
 from ChineseErrorCorrector.dat import GrammarErrorDat
 
 cged_tool = GrammarErrorDat()
-print(cged_tool.wrong_char("小明住在北京"))
+print(cged_tool.wrong_char("小明住在北京，热爱NLP。"))
 # 输出：小明住在北京。热爱NLP。
 
 ```
