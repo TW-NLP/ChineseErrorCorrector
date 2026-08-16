@@ -381,6 +381,6 @@ print(dat.lack_punctuation("小明住在北京")) # 缺少标点
 
 [![GitHub stars](https://img.shields.io/github/stars/TW-NLP/ChineseErrorCorrector?style=social)](https://github.com/TW-NLP/ChineseErrorCorrector/stargazers)
 
-[![Star History Chart](https://api.star-history.com/svg?repos=TW-NLP/ChineseErrorCorrector&type=Date)](https://star-history.com/#TW-NLP/ChineseErrorCorrector&Date)
+[![Star History Chart](https://star-history.dera.page/svg?repos=TW-NLP/ChineseErrorCorrector&type=Date)](https://star-history.dera.page/#TW-NLP/ChineseErrorCorrector&Date)
 
 </div>
